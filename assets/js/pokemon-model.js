@@ -1,3 +1,4 @@
+// Classe para representar um Pokémon
 class Pokemon {
     number;
     name;
