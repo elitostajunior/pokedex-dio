@@ -33,6 +33,16 @@ function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonList.innerHTML += newHtml
+
+        // Adicionar evento de clique para redirecionar para cada elemento .pokemon
+        const pokemonElements = document.querySelectorAll('.pokemon')
+        pokemonElements.forEach((element, index) => {
+            element.addEventListener('click', () => {
+                const selectedPokemon = pokemons[index]
+                sessionStorage.setItem('selectedPokemon', JSON.stringify(selectedPokemon))
+                window.location.href = 'pokemon-details.html'
+            })
+        })
     })
 }
 
